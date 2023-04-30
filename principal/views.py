@@ -60,3 +60,75 @@ class municipioEliminar(SuccessMessageMixin, DeleteView):
         success_message = 'municipio Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
         messages.success (self.request, (success_message))       
         return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+class Listadotdoc(ListView):
+    model = tdoc
+    
+    
+class tdocCrear(SuccessMessageMixin, CreateView):
+    model =tdoc
+    form = tdoc
+    fields = "__all__"
+    success_message ='tdoc creada correctamente'
+     
+    def get_success_url(self):        
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+class tdocDetalle (DetailView):
+    model =tdoc
+
+class  tdocActualizar(SuccessMessageMixin,UpdateView):
+    model =  tdoc
+    form = tdoc
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'postres' de nuestra Base de Datos 
+    success_message = 'tdoc Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+class tdocEliminar(SuccessMessageMixin, DeleteView): 
+    model = tdoc 
+    form = tdoc
+    fields = "__all__"     
+ 
+    # Redireccionamos a la pagina principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'tdoc Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+
+class Listadoctaller(ListView):
+    model = ctaller
+    
+    
+class ctallerCrear(SuccessMessageMixin, CreateView):
+    model =ctaller
+    form = ctaller
+    fields = "__all__"
+    success_message ='Categoria creada correctamente'
+     
+    def get_success_url(self):        
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+class ctallerDetalle (DetailView):
+    model =ctaller
+
+class  ctallerActualizar(SuccessMessageMixin,UpdateView):
+    model =  ctaller
+    form = ctaller
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'postres' de nuestra Base de Datos 
+    success_message = 'Categoria Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+class ctallerEliminar(SuccessMessageMixin, DeleteView): 
+    model = ctaller
+    form = ctaller
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Categoria Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+ 

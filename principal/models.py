@@ -40,7 +40,7 @@ class Contrato(models.Model):
         db_table = 'contrato'
 
 
-class Ctaller(models.Model):
+class ctaller(models.Model):
     ctaller = models.IntegerField(primary_key=True, db_comment='guarda el registro de cada taller ')
     descripcion = models.CharField(max_length=45, blank=True, null=True, db_comment='guarda el servicio que a prestar ')
     nombre = models.CharField(max_length=45, blank=True, null=True, db_comment='guarda el nombre de cada taller ')
@@ -183,7 +183,7 @@ class Servicio(models.Model):
         db_table = 'servicio'
 
 
-class Tdoc(models.Model):
+class tdoc(models.Model):
     idtdoc = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=45, blank=True, null=True)
     descripcion = models.CharField(max_length=45, blank=True, null=True)
