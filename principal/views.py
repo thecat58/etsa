@@ -131,4 +131,115 @@ class ctallerEliminar(SuccessMessageMixin, DeleteView):
         success_message = 'Categoria Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
         messages.success (self.request, (success_message))       
         return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+
+class Listadotipersona(ListView):
+    model = tipersona
+    
+    
+class tipersonaCrear(SuccessMessageMixin, CreateView):
+    model =tipersona
+    form = tipersona
+    fields = "__all__"
+    success_message ='Categoria creada correctamente'
+     
+    def get_success_url(self):        
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+class tipersonaDetalle (DetailView):
+    model =tipersona
+
+class  tipersonaActualizar(SuccessMessageMixin,UpdateView):
+    model =  tipersona
+    form = tipersona
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'postres' de nuestra Base de Datos 
+    success_message = 'Categoria Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+class tipersonaEliminar(SuccessMessageMixin, DeleteView): 
+    model = tipersona 
+    form = tipersona
+    fields = "__all__"     
  
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Categoria Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+
+class Listadocateserv(ListView):
+    model = cateserv
+    
+    
+class cateservCrear(SuccessMessageMixin, CreateView):
+    model =cateserv
+    form = cateserv
+    fields = "__all__"
+    success_message ='Categoria creada correctamente'
+     
+    def get_success_url(self):        
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+class cateservDetalle (DetailView):
+    model =cateserv
+
+class  cateservActualizar(SuccessMessageMixin,UpdateView):
+    model =  cateserv
+    form = cateserv
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'postres' de nuestra Base de Datos 
+    success_message = 'Categoria Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+class cateservEliminar(SuccessMessageMixin, DeleteView): 
+    model = cateserv 
+    form = cateserv
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Categoria Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+ 
+        
+class Listadoscripcion(ListView):
+    model = scripcion
+    
+    
+class scripcionCrear(SuccessMessageMixin, CreateView):
+    model =scripcion
+    form = scripcion
+    fields = "__all__"
+    success_message ='Categoria creada correctamente'
+     
+    def get_success_url(self):        
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+class scripcionDetalle (DetailView):
+    model =scripcion
+
+class  scripcionActualizar(SuccessMessageMixin,UpdateView):
+    model =  scripcion
+    form = scripcion
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'postres' de nuestra Base de Datos 
+    success_message = 'Categoria Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+class scripcionEliminar(SuccessMessageMixin, DeleteView): 
+    model = scripcion 
+    form = scripcion
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Categoria Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+ 
+
+
+

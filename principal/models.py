@@ -18,7 +18,7 @@ class Agendamiento(models.Model):
         db_table = 'agendamiento'
 
 
-class Cateserv(models.Model):
+class cateserv(models.Model):
     idcateserv = models.IntegerField(primary_key=True)
     descripcion = models.CharField(max_length=45, blank=True, null=True)
     nombre = models.CharField(max_length=45, blank=True, null=True)
@@ -162,7 +162,7 @@ class Planes(models.Model):
         db_table = 'planes'
 
 
-class Scripcion(models.Model):
+class scripcion(models.Model):
     idscripcion = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=45, blank=True, null=True)
     valor = models.CharField(max_length=45, blank=True, null=True)
@@ -193,7 +193,7 @@ class tdoc(models.Model):
         db_table = 'tdoc'
 
 
-class Tipersona(models.Model):
+class tipersona(models.Model):
     idtipersona = models.IntegerField(primary_key=True)
     descripcion = models.CharField(max_length=45, blank=True, null=True, db_comment='el usuario podra describir si es empresario. cliente o administrado de la aplicasion ')
 

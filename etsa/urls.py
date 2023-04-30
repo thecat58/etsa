@@ -67,7 +67,62 @@ path('home/',home,name='index'),
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('ctaller/eliminar/<int:pk>', ctallerEliminar.as_view(), name='ctaller/eliminar.html'),    
+
+
+    path('admin/', admin.site.urls),
+    
+    path('tipersona/', Listadotipersona.as_view(template_name = "tipersona/index.html"), name='leer'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('tipersona/detalle/<int:pk>', tipersonaDetalle.as_view(template_name = "tipersona/detalle.html"), name='detalles'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    path('tipersona/crear', tipersonaCrear.as_view(template_name = "tipersona/crear.html"), name='crear'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('tipersona/editar/<int:pk>', tipersonaActualizar.as_view(template_name = "tipersona/actualizar.html"), name='actualizar'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('tipersona/eliminar/<int:pk>', tipersonaEliminar.as_view(), name='tipersona/eliminar.html'),    
+
+path('admin/', admin.site.urls),
+    
+    path('cateserv/', Listadocateserv.as_view(template_name = "cateserv/index.html"), name='leer'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('cateserv/detalle/<int:pk>', cateservDetalle.as_view(template_name = "cateserv/detalle.html"), name='detalles'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    path('cateserv/crear', cateservCrear.as_view(template_name = "cateserv/crear.html"), name='crear'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('cateserv/editar/<int:pk>', cateservActualizar.as_view(template_name = "cateserv/actualizar.html"), name='actualizar'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('cateserv/eliminar/<int:pk>', cateservEliminar.as_view(), name='cateserv/eliminar.html'),    
+
+path('admin/', admin.site.urls),
+    path('scripcion/', Listadoscripcion.as_view(template_name = "scripcion/index.html"), name='leer'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('scripcion/detalle/<int:pk>', scripcionDetalle.as_view(template_name = "scripcion/detalle.html"), name='detalles'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    path('scripcion/crear', scripcionCrear.as_view(template_name = "scripcion/crear.html"), name='crear'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('scripcion/editar/<int:pk>', scripcionActualizar.as_view(template_name = "scripcion/actualizar.html"), name='actualizar'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('scripcion/eliminar/<int:pk>', scripcionEliminar.as_view(), name='scripcion/eliminar.html'),    
+
+
+
+
 ]
+
+
+    
 
 
 
