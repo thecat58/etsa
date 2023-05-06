@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'etsa.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pruing',
+        'NAME': 'etsa',
         'USER': 'root',
         'PASSWORD': 'Admin1234*',
         'PORT': '3306',
