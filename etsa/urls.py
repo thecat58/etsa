@@ -37,7 +37,7 @@ urlpatterns = [
 
 
     path('admin/', admin.site.urls),
-    path('home/',home,name='index'),  
+    path('',Home,name='index'),  
     
     # La ruta 'tdoc' en donde mostraremos una pagina con los tdoc de un tdoc o registro 
     path('tdoc/detalle/<int:pk>', tdocDetalle.as_view(template_name = "tdoc/detalle.html"), name='detalles'),
