@@ -3,7 +3,7 @@
 #   * Rearrange models' order
 #   * Make sure each model has one field with primary_key=True
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
+#   * Remove `managed = True` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
@@ -16,75 +16,6 @@ class Agendamiento(models.Model):
     class Meta:
         managed = True
         db_table = 'agendamiento'
-
-
-class AuthGroup(models.Model):
-    name = models.CharField(unique=True, max_length=150)
-
-    class Meta:
-        managed = True
-        db_table = 'auth_group'
-
-
-class AuthGroupPermissions(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
-
-    class Meta:
-        managed = True
-        db_table = 'auth_group_permissions'
-        unique_together = (('group', 'permission'),)
-
-
-class AuthPermission(models.Model):
-    name = models.CharField(max_length=255)
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
-    codename = models.CharField(max_length=100)
-
-    class Meta:
-        managed = True
-        db_table = 'auth_permission'
-        unique_together = (('content_type', 'codename'),)
-
-
-class AuthUser(models.Model):
-    password = models.CharField(max_length=128)
-    last_login = models.DateTimeField(blank=True, null=True)
-    is_superuser = models.IntegerField()
-    username = models.CharField(unique=True, max_length=150)
-    first_name = models.CharField(max_length=150)
-    last_name = models.CharField(max_length=150)
-    email = models.CharField(max_length=254)
-    is_staff = models.IntegerField()
-    is_active = models.IntegerField()
-    date_joined = models.DateTimeField()
-
-    class Meta:
-        managed = True
-        db_table = 'auth_user'
-
-
-class AuthUserGroups(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-
-    class Meta:
-        managed = True
-        db_table = 'auth_user_groups'
-        unique_together = (('user', 'group'),)
-
-
-class AuthUserUserPermissions(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-    permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
-
-    class Meta:
-        managed = True
-        db_table = 'auth_user_user_permissions'
-        unique_together = (('user', 'permission'),)
 
 
 class Cateserv(models.Model):
@@ -101,8 +32,8 @@ class Contrato(models.Model):
     idcontrato = models.IntegerField(primary_key=True, db_comment='guarda registro de contrato que realiza la empresa ')
     descripcion = models.CharField(max_length=45, blank=True, null=True, db_comment='guarda los terminos y condiciones de cada contrato ')
     nombre = models.CharField(max_length=45, blank=True, null=True, db_comment='guarda el nombre del contrato ')
-    persona_idpersona = models.ForeignKey('Persona', models.DO_NOTHING, db_column='persona_idpersona')
     servicio_idservicio = models.ForeignKey('Servicio', models.DO_NOTHING, db_column='servicio_idservicio')
+    persona_idpersona = models.ForeignKey('Persona', models.DO_NOTHING, db_column='persona_idpersona')
 
     class Meta:
         managed = True
@@ -142,51 +73,6 @@ class Departamento(models.Model):
     class Meta:
         managed = True
         db_table = 'departamento'
-
-
-class DjangoAdminLog(models.Model):
-    action_time = models.DateTimeField()
-    object_id = models.TextField(blank=True, null=True)
-    object_repr = models.CharField(max_length=200)
-    action_flag = models.PositiveSmallIntegerField()
-    change_message = models.TextField()
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-
-    class Meta:
-        managed = True
-        db_table = 'django_admin_log'
-
-
-class DjangoContentType(models.Model):
-    app_label = models.CharField(max_length=100)
-    model = models.CharField(max_length=100)
-
-    class Meta:
-        managed = True
-        db_table = 'django_content_type'
-        unique_together = (('app_label', 'model'),)
-
-
-class DjangoMigrations(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    app = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    applied = models.DateTimeField()
-
-    class Meta:
-        managed = True
-        db_table = 'django_migrations'
-
-
-class DjangoSession(models.Model):
-    session_key = models.CharField(primary_key=True, max_length=40)
-    session_data = models.TextField()
-    expire_date = models.DateTimeField()
-
-    class Meta:
-        managed = True
-        db_table = 'django_session'
 
 
 class Empresa(models.Model):
@@ -238,8 +124,81 @@ class Municipio(models.Model):
 
 
 class Persona(models.Model):
-    idpersona = models.AutoField(primary_key=True, db_comment='guarda  identificando individualmente el registro de cada persona.\n')
+    idpersona = models.AutoField(primary_key=True, db_comment='guarda  identificando individualmente el registro de cada persona.\n')  # The composite primary key (idpersona, tipersona_idtipersona, tipersona_idtipersona1) found, that is not supported. The first column is selected.
     nombre = models.CharField(max_length=45, db_comment='guarda el nombre del usuario ')
     apellido = models.CharField(max_length=45, db_comment='guarda el apellido del usuario')
     telefono = models.CharField(max_length=45, db_comment='guardara el contacto del usuario ')
     correo = models.CharField(max_length=45, db_comment='guardara el correo del usuario')
+    contrasena = models.CharField(max_length=45, db_comment='guarda la contrase�a del usuario')
+    municipio_idmunicipio = models.ForeignKey(Municipio, models.DO_NOTHING, db_column='municipio_idmunicipio')
+    genero = models.CharField(max_length=45, blank=True, null=True)
+    fechanacimiento = models.DateField(blank=True, null=True)
+    tdoc_idtdoc = models.ForeignKey('Tdoc', models.DO_NOTHING, db_column='tdoc_idtdoc')
+    tipersona_idtipersona = models.IntegerField()
+    tipersona_idtipersona1 = models.ForeignKey('Tipersona', models.DO_NOTHING, db_column='tipersona_idtipersona1')
+
+    class Meta:
+        managed = True
+        db_table = 'persona'
+        unique_together = (('idpersona', 'tipersona_idtipersona', 'tipersona_idtipersona1'),)
+
+
+class Pgos(models.Model):
+    idpgos = models.IntegerField(primary_key=True)
+    descripcion = models.CharField(max_length=45, blank=True, null=True)
+    factcabeza_idfactura = models.ForeignKey(Factcabeza, models.DO_NOTHING, db_column='factcabeza_idfactura')
+
+    class Meta:
+        managed = True
+        db_table = 'pgos'
+
+
+class Planes(models.Model):
+    idplanes = models.IntegerField(primary_key=True, db_comment='guarda registro de cada plan \n')
+    descripcion = models.CharField(max_length=45, blank=True, null=True, db_comment='guarda las promociones de cada taller \n')
+    nombre = models.CharField(max_length=45, blank=True, null=True, db_comment='guarda el nombre del plan ')
+    servicio_idservicio = models.ForeignKey('Servicio', models.DO_NOTHING, db_column='servicio_idservicio')
+
+    class Meta:
+        managed = True
+        db_table = 'planes'
+
+
+class Scripcion(models.Model):
+    idscripcion = models.IntegerField(primary_key=True)
+    nombre = models.CharField(max_length=45, blank=True, null=True)
+    valor = models.CharField(max_length=45, blank=True, null=True)
+    fecha = models.CharField(max_length=45, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'scripcion'
+
+
+class Servicio(models.Model):
+    idservicio = models.IntegerField(primary_key=True)
+    nombre = models.CharField(max_length=45, blank=True, null=True)
+    cateserv_idcateserv = models.ForeignKey(Cateserv, models.DO_NOTHING, db_column='cateserv_idcateserv')
+
+    class Meta:
+        managed = True
+        db_table = 'servicio'
+
+
+class Tdoc(models.Model):
+    idtdoc = models.IntegerField(primary_key=True)
+    nombre = models.CharField(max_length=45, blank=True, null=True)
+    descripcion = models.CharField(max_length=45, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'tdoc'
+
+
+class Tipersona(models.Model):
+    idtipersona = models.AutoField(primary_key=True)
+    descripcion = models.CharField(max_length=45, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'tipersona'
