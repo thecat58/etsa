@@ -240,6 +240,40 @@ class scripcionEliminar(SuccessMessageMixin, DeleteView):
         messages.success (self.request, (success_message))       
         return reverse('leer') # Redireccionamos a la vista principal 'leer'
  
+class Listadocateserv(ListView):
+    model = cateserv
+    
+    
+class cateservCrear(SuccessMessageMixin, CreateView):
+    model =cateserv
+    form = cateserv
+    fields = "__all__"
+    success_message ='cateserv creada correctamente'
+     
+    def get_success_url(self):        
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+class cateservDetalle (DetailView):
+    model =cateserv
+
+class  cateservActualizar(SuccessMessageMixin,UpdateView):
+    model =  cateserv
+    form = cateserv
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'postres' de nuestra Base de Datos 
+    success_message = 'cateserv Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+class cateservEliminar(SuccessMessageMixin, DeleteView): 
+    model = cateserv 
+    form = cateserv
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'cateserv Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
 
 
 
