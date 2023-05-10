@@ -24,33 +24,39 @@
     	    <div align="left" class="btn_crear mb-3">
     	      <a href="crear" type="button" class="btn btn-primary">Crear</a>
     	    </div>
-    	     <!--listando los categoria en una tabla HTML-->
+    	     <!--listando los factcabeza en una tabla HTML-->
     	    <table class="table table-striped table-hover">
     	        <thead>
     	          <tr>
-    	            <th width="35%">Codigo  de cateserv</th>
-    	            <th>Nombre</th>
-    	            <th>Descripción</th>
+    	            <th width="35%">Codigo  de factcabeza</th>
+    	            <th>cliente</th>
+    	            <th>fecha</th>
+                    <th>valor unitario</th>
+                    <th>pagos_targetacredito</th>
+                    <th>persona_idpersona</th>
     	            
     	          </tr>
     	        </thead>
     	        <tbody>
     	        
-    	        <!-- Recorremos los objetos o registros que tenemos en nuestra tabla 'cateserv' y los listamos -->
-    	        {% for cateserv in object_list %}
+    	        <!-- Recorremos los objetos o registros que tenemos en nuestra tabla 'factcabeza' y los listamos -->
+    	        {% for factcabeza in object_list %}
     	          <tr>
-    	            <td>{{ cateserv.idcateserv }}</td>
-    	            <td>{{ cateserv.nombre }}</td>
-    	            <td>{{ cateserv.descripcion }}</td>
+    	            <td>{{ factcabeza.idfactura }}</td>
+    	            <td>{{ factcabeza.cliente }}</td>
+    	            <td>{{ factcabeza.fecha }}</td>
+                    <td>{{ factcabeza.valor unitario }}</td>
+                    <td>{{ factcabeza.pagos_targetacredito }}</td>
+                    <td>{{ factcabeza.persona_idpersona }}</td>
     	            <td>
     	             <!-- Usaremos un formulario que realizará la tarea de eliminar un registro o postre desde la misma tabla HTML -->                        
-    	        <form method="POST" action="eliminar/{{cateserv.idcateserv}}">
+    	        <form method="POST" action="eliminar/{{factcabeza.idfactura}}">
     	            {% csrf_token %}
     	            <div class="btn-group">
     	   
     	              <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->
-    	              <a href="detalle/{{cateserv.idcateserv}}" title="Ver" type="button" class="btn btn-success">Ver </a>
-    	              <a href="editar/{{cateserv.idcateserv}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+    	              <a href="detalle/{{factcabeza.idfactura}}" title="Ver" type="button" class="btn btn-success">Ver </a>
+    	              <a href="editar/{{factcabeza.idfactura}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
     	              <button class="btn btn-danger" onclick="return eliminar();" type="submit">
     	                Eliminar
     	              </button>

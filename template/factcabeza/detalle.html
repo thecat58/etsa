@@ -1,0 +1,23 @@
+{# Cargamos la librería #}
+  {% load bootstrap4 %}
+ 
+  {# CSS Bootstrap #}
+  {% bootstrap_css %} 
+
+  {# Widget Tweaks #}
+  {% load widget_tweaks %}
+
+<h4>Detalles</h4>
+ 
+<p><span class="txt_negrita">Codigo de factcabeza:</span> <br> {{object.idfactura}}</p>
+<p><span class="txt_negrita">cliente:</span> <br> {{object.cliente}}</p>
+<p><span class="txt_negrita">fecha:</span> <br> {{object.fecha}}</p>
+<p><span class="txt_negrita">valor unitario:</span> <br> {{object.valor unitario}}</p>
+<p><span class="txt_negrita">pagos_targetacredito:</span> <br> {{object.pagos_targetacredito}}</p>
+<p><span class="txt_negrita">persona_idpersona:</span> <br> {{object.persona_idpersona}}</p>
+
+<p><span class="txt_negrita">Creado:</span> <br> {{object.created_at}}</p>
+<p><span class="txt_negrita">Actualizado:</span> <br> {{object.updated_at}}</p>
+ 
+<!-- Botón para volver a la vista principal (Home) -->
+<a href="../" type="submit" class="btn btn-primary">Volver</a>

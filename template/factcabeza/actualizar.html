@@ -1,0 +1,46 @@
+{# Cargamos la librería #}
+  {% load bootstrap4 %}
+ 
+  {# CSS Bootstrap #}
+  {% bootstrap_css %} 
+
+  {# Widget Tweaks #}
+  {% load widget_tweaks %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <!-- {{ form.as_p }} -->
+    <div class="form-group">
+      <label for="idfactura" class="txt_negrita">Codigo factabeza</label>
+      {{ form.idfactura|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+    </div>
+    <div class="form-group">
+      <label for="cliente" class="txt_negrita">cliente</label>
+      {{ form.cliente|add_class:"form-control" }}
+    </div>
+    <div class="form-group">
+      <label for="fecha " class="txt_negrita">fecha</label>
+      {{ form.fecha|add_class:"form-control" }}
+    </div>
+        <div class="form-group">
+      <label for="valor unitario " class="txt_negrita">valor unitario</label>
+      {{ form.valor unitario|add_class:"form-control" }}
+    </div>
+        <div class="form-group">
+      <label for="valortotal " class="txt_negrita">valortotal</label>
+      {{ form.valortotal|add_class:"form-control" }}
+    </div>
+        <div class="form-group">
+      <label for="pagos_targetacredito " class="txt_negrita">pagos_targetacredito</label>
+      {{ form.pagos_targetacredito|add_class:"form-control" }}
+    </div>
+        <div class="form-group">
+      <label for="persona_idpersona " class="txt_negrita">persona_idpersona</label>
+      {{ form.persona_idpersona|add_class:"form-control" }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Aceptar</button>
+    <a href="../" type="submit" class="btn btn-primary">Volver</a>
+   
+  </form>
