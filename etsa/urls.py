@@ -22,6 +22,7 @@ urlpatterns = [
     path('home/',Home,name='index'),
     path('municipio/', Listadomunicipio.as_view(template_name = "municipio/index.html"), name='leer'),
     path('tdoc/', Listadotdoc.as_view(template_name = "tdoc/index.html"), name='leer'),
+    
  
     # La ruta 'detalles' en donde mostraremos una pagina con los detalles de un Categoria o registro 
     path('municipio/detalle/<int:pk>', municipioDetalle.as_view(template_name = "municipio/detalle.html"), name='detalles'),
@@ -36,8 +37,8 @@ urlpatterns = [
     path('municipio/eliminar/<int:pk>', municipioEliminar.as_view(), name='municipio/eliminar.html'),    
 
 
-    path('admin/', admin.site.urls),
-    path('',Home,name='index'),  
+path('admin/', admin.site.urls),
+path('',Home,name='index'),  
     
     # La ruta 'tdoc' en donde mostraremos una pagina con los tdoc de un tdoc o registro 
     path('tdoc/detalle/<int:pk>', tdocDetalle.as_view(template_name = "tdoc/detalle.html"), name='detalles'),
@@ -70,7 +71,6 @@ path('home/',home,name='index'),
 
 
 path('admin/', admin.site.urls),
-    
     path('tipersona/', Listadotipersona.as_view(template_name = "tipersona/index.html"), name='leer'),
  
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
@@ -86,7 +86,6 @@ path('admin/', admin.site.urls),
     path('tipersona/eliminar/<int:pk>', tipersonaEliminar.as_view(), name='tipersona/eliminar.html'),    
 
 path('admin/', admin.site.urls),
-    
     path('cateserv/', Listadocateserv.as_view(template_name = "cateserv/index.html"), name='leer'),
  
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
@@ -129,8 +128,22 @@ path('cateserv/', Listadocateserv.as_view(template_name = "cateserv/index.html")
     path('cateserv/editar/<int:pk>', cateservActualizar.as_view(template_name = "cateserv/actualizar.html"), name='actualizar'), 
  
     # La ruta 'eliminar' que usaremos para eliminar un cateserv o registro de la Base de Datos 
-    path('cateserv/eliminar/<int:pk>', cateservEliminar.as_view(), name='cateserv/eliminar.html'),    
+    path('cateserv/eliminar/<int:pk>', cateservEliminar.as_view(), name='cateserv/eliminar.html'),  
 
+path('admin/', admin.site.urls),
+path('factcabeza/', Listadofactcabeza.as_view(template_name = "factcabeza/index.html"), name='leer'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un factcabeza o registro 
+    path('factcabeza/detalle/<int:pk>', factcabezaDetalle.as_view(template_name = "factcabeza/detalle.html"), name='detalles'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo factcabeza o registro  
+    path('factcabeza/crear', factcabezaCrear.as_view(template_name = "factcabeza/crear.html"), name='crear'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un factcabeza registro de la Base de Datos 
+    path('factcabeza/editar/<int:pk>', factcabezaActualizar.as_view(template_name = "factcabeza/actualizar.html"), name='actualizar'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un factcabeza o registro de la Base de Datos 
+    path('factcabeza/eliminar/<int:pk>', factcabezaEliminar.as_view(), name='factcabeza/eliminar.html'),
 
 
 ]

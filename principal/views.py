@@ -274,6 +274,39 @@ class cateservEliminar(SuccessMessageMixin, DeleteView):
         success_message = 'Cateserv Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
         messages.success (self.request, (success_message))       
         return reverse('leer') # Redireccionamos a la vista principal 'leer'
+    
+class Listadofactcabeza(ListView):
+    model =  Factcabeza
 
+class factcabezaCrear(SuccessMessageMixin, CreateView):
+    model =Factcabeza
+    form = Factcabeza
+    fields = "__all__"
+    success_message ='Factcabeza creada correctamente'
+     
+    def get_success_url(self):        
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+class factcabezaDetalle (DetailView):
+    model =Factcabeza
+
+class  factcabezaActualizar(SuccessMessageMixin,UpdateView):
+    model =  Factcabeza
+    form = Factcabeza
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'postres' de nuestra Base de Datos 
+    success_message = 'Factcabeza Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+class factcabezaEliminar(SuccessMessageMixin, DeleteView): 
+    model = Factcabeza
+    form = Factcabeza
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Factcabeza Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
 
 
