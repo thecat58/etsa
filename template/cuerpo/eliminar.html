@@ -9,24 +9,22 @@
 <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th width="35%">Codigo factcabeza</th>
-        <th>cliente</th>
-        <th>fecha </th>
+        <th width="35%">Codigo cuerpo</th>
+        <th>idcabeza</th>
+        <th>cantidad </th>
         <th>valorunitario </th>
-        <th>pagos_targetacredito </th>
-        <th>persona_idpersona </th>
+        <th>valortotal </th>
       </tr>
     </thead>
     <tbody>  
    
-    {% for factcabeza in object_list %}
+    {% for categoria in object_list %}
       <tr>
-        <td>{{ factcabeza.idfactura}}</td>
-        <td>{{ factcabeza.cliente }}</td>
-        <td>{{ factcabeza.fecha }}</td>
-        <td>{{ factcabeza.valor_unitario }}</td>
-        <td>{{ factcabeza.pagos_targetacredito }}</td>
-        <td>{{ factcabeza.persona_idpersona }}</td>
+        <td>{{ cuerpo.idcuerpo}}</td>
+        <td>{{ cuerpo.idcabeza }}</td>
+        <td>{{ cuerpo.cantidad }}</td>
+        <td>{{ cuerpo.valorunitario }}</td>
+        <td>{{ cuerpo.valortotal }}</td>
         <td>
    
           <!-- Usaremos un formulario que realizará la tarea de eliminar un registro o postre desde la misma tabla HTML -->                        
@@ -34,8 +32,8 @@
             {% csrf_token %}
             <div class="btn-group">
               
-              <a href="detalle/{{factcabeza.idfactura}}" title="Ver" type="button" class="btn btn-success">Ver </a>
-              <a href="editar/{{factcabeza.idfactura}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+              <a href="detalle/{{cuerpo.idcuerpo}}" title="Ver" type="button" class="btn btn-success">Ver </a>
+              <a href="editar/{{cuerpo.idcuerpo}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
               
               <!-- Este botón ejecuta el formulario para eliminar un registro o postre en la Base de datos -->
               <button class="btn btn-danger" onclick="return eliminar();" type="submit">

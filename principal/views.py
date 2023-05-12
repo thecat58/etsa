@@ -308,5 +308,73 @@ class factcabezaEliminar(SuccessMessageMixin, DeleteView):
         success_message = 'Factcabeza Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
         messages.success (self.request, (success_message))       
         return reverse('leer') # Redireccionamos a la vista principal 'leer'
+    
+class Listadopersona(ListView):
+    model =  Persona
 
+class personaCrear(SuccessMessageMixin, CreateView):
+    model =Persona
+    form = Persona
+    fields = "__all__"
+    success_message ='Persona creada correctamente'
+     
+    def get_success_url(self):        
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+class personaDetalle (DetailView):
+    model =Persona
+
+class  personaActualizar(SuccessMessageMixin,UpdateView):
+    model =  Persona
+    form = Persona
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'postres' de nuestra Base de Datos 
+    success_message = 'Persona Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+class personaEliminar(SuccessMessageMixin, DeleteView): 
+    model = Persona
+    form = Persona
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Persona Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+class Listadocuerpo(ListView):
+    model = Cuerpo
+    
+    
+class cuerpoCrear(SuccessMessageMixin, CreateView):
+    model =Cuerpo
+    form = Cuerpo
+    fields = "__all__"
+    success_message ='Cuerpo creada correctamente'
+     
+    def get_success_url(self):        
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+class cuerpoDetalle (DetailView):
+    model =Cuerpo
+
+class  cuerpoActualizar(SuccessMessageMixin,UpdateView):
+    model =  Cuerpo
+    form = Cuerpo
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'postres' de nuestra Base de Datos 
+    success_message = 'Cuerpo Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+class cuerpoEliminar(SuccessMessageMixin, DeleteView): 
+    model = Cuerpo 
+    form = Cuerpo
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Cuerpo Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
 

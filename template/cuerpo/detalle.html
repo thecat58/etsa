@@ -1,0 +1,22 @@
+{# Cargamos la librería #}
+{% load bootstrap4 %}
+
+{# CSS Bootstrap #}
+{% bootstrap_css %} 
+
+{# Widget Tweaks #}
+{% load widget_tweaks %}
+
+<h4>Detalles</h4>
+
+<p><span class="txt_negrita">Codigo de cuerpo:</span> <br> {{object.idcuerpo}}</p>
+<p><span class="txt_negrita">idcabeza:</span> <br> {{object.idcabeza}}</p>
+<p><span class="txt_negrita">cantidad:</span> <br> {{object.cantidad}}</p>
+<p><span class="txt_negrita">valorunitario:</span> <br> {{object.valorunitario}}</p>
+<p><span class="txt_negrita">valortotal:</span> <br> {{object.valortotal}}</p>
+
+<p><span class="txt_negrita">Creado:</span> <br> {{object.created_at}}</p>
+<p><span class="txt_negrita">Actualizado:</span> <br> {{object.updated_at}}</p>
+
+<!-- Botón para volver a la vista principal (Home) -->
+<a href="../" type="submit" class="btn btn-primary">Volver</a>

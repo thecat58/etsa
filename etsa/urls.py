@@ -145,6 +145,20 @@ path('factcabeza/', Listadofactcabeza.as_view(template_name = "factcabeza/index.
     # La ruta 'eliminar' que usaremos para eliminar un factcabeza o registro de la Base de Datos 
     path('factcabeza/eliminar/<int:pk>', factcabezaEliminar.as_view(), name='factcabeza/eliminar.html'),
 
+path('admin/', admin.site.urls),
+path('cuerpo/', Listadocuerpo.as_view(template_name = "cuerpo/index.html"), name='leer'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un cuerpo o registro 
+    path('cuerpo/detalle/<int:pk>', cuerpoDetalle.as_view(template_name = "cuerpo/detalle.html"), name='detalles'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo cuerpo o registro  
+    path('cuerpo/crear', cuerpoCrear.as_view(template_name = "cuerpo/crear.html"), name='crear'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un cuerpo registro de la Base de Datos 
+    path('cuerpo/editar/<int:pk>', cuerpoActualizar.as_view(template_name = "cuerpo/actualizar.html"), name='actualizar'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un cuerpo o registro de la Base de Datos 
+    path('cuerpo/eliminar/<int:pk>', cuerpoEliminar.as_view(), name='cuerpo/eliminar.html'),
 
 ]
 
