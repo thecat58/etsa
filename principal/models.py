@@ -88,7 +88,6 @@ class Empresa(models.Model):
         managed = True
         db_table = 'empresa'
 
-
 class Factcabeza(models.Model):
     idfactura = models.IntegerField(primary_key=True, db_comment='guarda registro de factura ')
     cliente = models.CharField(max_length=45, blank=True, null=True)

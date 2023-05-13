@@ -1,0 +1,54 @@
+{# Cargamos la librería #}
+  {% load bootstrap4 %}
+ 
+  {# CSS Bootstrap #}
+  {% bootstrap_css %} 
+
+  {# Widget Tweaks #}
+  {% load widget_tweaks %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <!-- {{ form.as_p }} -->
+    <div class="form-group">
+      <label for="idpersona" class="txt_negrita">Codigo persona</label>
+      {{ form.idpersona|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+    </div>
+    <div class="form-group">
+      <label for="nombre" class="txt_negrita">nombre</label>
+      {{ form.nombre|add_class:"form-control" }}
+    </div>
+    <div class="form-group">
+      <label for="apellido " class="txt_negrita">apellido</label>
+      {{ form.apellido|add_class:"form-control" }}
+    </div>
+    <div class="form-group">
+        <label for="telefono " class="txt_negrita">telefono</label>
+        {{ form.telefono|add_class:"form-control" }}
+      </div>
+      <div class="form-group">
+        <label for="correo " class="txt_negrita">correo</label>
+        {{ form.correo|add_class:"form-control" }}
+      </div>
+      <div class="form-group">
+        <label for="contraseña " class="txt_negrita">contraseña</label>
+        {{ form.contraseña|add_class:"form-control" }}
+      </div>
+      <div class="form-group">
+        <label for="genero " class="txt_negrita">genero</label>
+        {{ form.genero|add_class:"form-control" }}
+      </div>
+      <div class="form-group">
+        <label for="fechanacimiento " class="txt_negrita">fechanacimiento</label>
+        {{ form.fechanacimiento|add_class:"form-control" }}
+      </div>
+      <div class="form-group">
+        <label for="descripcion " class="txt_negrita">tipersona_idtipersona</label>
+        {{ form.descripcion|add_class:"form-control" }}
+      </div>
+
+    <button type="submit" class="btn btn-primary">Aceptar</button>
+    <a href="../" type="submit" class="btn btn-primary">Volver</a>
+   
+  </form>
