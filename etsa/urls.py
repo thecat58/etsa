@@ -24,7 +24,7 @@ from principal.views import Home
 urlpatterns = [
 
     path('home/',Home,name='index'),
-    path('municipio/', Listadomunicipio.as_view(template_name = "municipio/index.html"), name='leer'),
+    path('municipio/', Listadomunicipio.as_view(template_name = "municipio/index.html"), name='leermun'),
     path('tdoc/', Listadotdoc.as_view(template_name = "tdoc/index.html"), name='leer'),
     
     path('', LoginView.as_view(template_name='login.html'),name='login'),
@@ -41,7 +41,7 @@ urlpatterns = [
     path('municipio/editar/<int:pk>', municipioActualizar.as_view(template_name = "municipio/actualizar.html"), name='actualizar'), 
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
-    path('municipio/eliminar/<int:pk>', municipioEliminar.as_view(), name='municipio/eliminar.html'),    
+    
 
 
 
@@ -59,7 +59,7 @@ urlpatterns = [
 
 
     
-    path('ctaller/', Listadoctaller.as_view(template_name = "ctaller/index.html"), name='leer'),
+    path('ctaller/', Listadoctaller.as_view(template_name = "ctaller/index.html"), name='leerctaller'),
  
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
     path('ctaller/detalle/<int:pk>', ctallerDetalle.as_view(template_name = "ctaller/detalle.html"), name='detalles'),
