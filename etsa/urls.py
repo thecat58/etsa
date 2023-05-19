@@ -14,16 +14,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.contrib.auth.views import LoginView, LogoutView
+from msilib.schema import Patch
+from re import template
 from django.contrib import admin
 from django.urls import path
 from principal.views import *
+from principal.views import Home
 urlpatterns = [
-    path('admin/', admin.site.urls),
+
     path('home/',Home,name='index'),
     path('municipio/', Listadomunicipio.as_view(template_name = "municipio/index.html"), name='leer'),
     path('tdoc/', Listadotdoc.as_view(template_name = "tdoc/index.html"), name='leer'),
     
- 
+    path('', LoginView.as_view(template_name='login.html'),name='login'),
+    path('logout/', LogoutView.as_view(template_name='login.html'), name="logout"),
+    
+    
     # La ruta 'detalles' en donde mostraremos una pagina con los detalles de un Categoria o registro 
     path('municipio/detalle/<int:pk>', municipioDetalle.as_view(template_name = "municipio/detalle.html"), name='detalles'),
  
@@ -37,9 +44,7 @@ urlpatterns = [
     path('municipio/eliminar/<int:pk>', municipioEliminar.as_view(), name='municipio/eliminar.html'),    
 
 
-path('admin/', admin.site.urls),
-path('',Home,name='index'),  
-    
+
     # La ruta 'tdoc' en donde mostraremos una pagina con los tdoc de un tdoc o registro 
     path('tdoc/detalle/<int:pk>', tdocDetalle.as_view(template_name = "tdoc/detalle.html"), name='detalles'),
  
@@ -52,8 +57,7 @@ path('',Home,name='index'),
     # La ruta 'eliminar' que usaremos para eliminar un tdoc o registro de la Base de Datos 
     path('tdoc/eliminar/<int:pk>', tdocEliminar.as_view(), name='tdoc/eliminar.html'),    
 
-path('admin/', admin.site.urls),
-path('home/',home,name='index'), 
+
     
     path('ctaller/', Listadoctaller.as_view(template_name = "ctaller/index.html"), name='leer'),
  
@@ -70,7 +74,6 @@ path('home/',home,name='index'),
     path('ctaller/eliminar/<int:pk>', ctallerEliminar.as_view(), name='ctaller/eliminar.html'),    
 
 
-path('admin/', admin.site.urls),
     path('tipersona/', Listadotipersona.as_view(template_name = "tipersona/index.html"), name='leer'),
  
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
@@ -85,7 +88,6 @@ path('admin/', admin.site.urls),
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('tipersona/eliminar/<int:pk>', tipersonaEliminar.as_view(), name='tipersona/eliminar.html'),    
 
-path('admin/', admin.site.urls),
     path('cateserv/', Listadocateserv.as_view(template_name = "cateserv/index.html"), name='leer'),
  
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
@@ -100,7 +102,7 @@ path('admin/', admin.site.urls),
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('cateserv/eliminar/<int:pk>', cateservEliminar.as_view(), name='cateserv/eliminar.html'),    
 
-path('admin/', admin.site.urls),
+
     path('scripcion/', Listadoscripcion.as_view(template_name = "scripcion/index.html"), name='leer'),
  
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
@@ -115,7 +117,6 @@ path('admin/', admin.site.urls),
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('scripcion/eliminar/<int:pk>', scripcionEliminar.as_view(), name='scripcion/eliminar.html'),  
 
-path('admin/', admin.site.urls),
 path('cateserv/', Listadocateserv.as_view(template_name = "cateserv/index.html"), name='leer'),
  
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un cateserv o registro 
@@ -130,7 +131,6 @@ path('cateserv/', Listadocateserv.as_view(template_name = "cateserv/index.html")
     # La ruta 'eliminar' que usaremos para eliminar un cateserv o registro de la Base de Datos 
     path('cateserv/eliminar/<int:pk>', cateservEliminar.as_view(), name='cateserv/eliminar.html'),  
 
-path('admin/', admin.site.urls),
 path('factcabeza/', Listadofactcabeza.as_view(template_name = "factcabeza/index.html"), name='leer'),
  
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un factcabeza o registro 
@@ -145,7 +145,7 @@ path('factcabeza/', Listadofactcabeza.as_view(template_name = "factcabeza/index.
     # La ruta 'eliminar' que usaremos para eliminar un factcabeza o registro de la Base de Datos 
     path('factcabeza/eliminar/<int:pk>', factcabezaEliminar.as_view(), name='factcabeza/eliminar.html'),
 
-path('admin/', admin.site.urls),
+
 path('cuerpo/', Listadocuerpo.as_view(template_name = "cuerpo/index.html"), name='leer'),
  
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un cuerpo o registro 
