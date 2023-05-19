@@ -99,6 +99,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -118,9 +119,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
+<<<<<<< HEAD
 LOGIN_REDIRECT_URL='index'
 
 LANGUAGE_CODE = 'en-es'
+=======
+LOGIN_REDIRECT_URL = 'index'
+
+LANGUAGE_CODE = 'es-es'
+>>>>>>> 196e9063c08b5bcbf566ba12828141ebbfdaa755
 
 TIME_ZONE = 'UTC'
 

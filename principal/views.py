@@ -28,6 +28,8 @@ from django import forms
 
 def Home(request):
     return render(request,"index.html")
+def Login(request):
+    return render(request,"Login.html")
 
 class Listadomunicipio(ListView):
     model =  Municipio
@@ -101,8 +103,7 @@ class tdocEliminar(SuccessMessageMixin, DeleteView):
 
 class Listadoctaller(ListView):
     model =  Ctaller
-    
-    
+      
 class ctallerCrear(SuccessMessageMixin, CreateView):
     model = Ctaller
     form =  Ctaller
@@ -138,7 +139,6 @@ class ctallerEliminar(SuccessMessageMixin, DeleteView):
 class Listadotipersona(ListView):
     model =  Tipersona
     
-    
 class tipersonaCrear(SuccessMessageMixin, CreateView):
     model = Tipersona
     form =  Tipersona
@@ -173,8 +173,7 @@ class tipersonaEliminar(SuccessMessageMixin, DeleteView):
 
 class Listadocateserv(ListView):
     model = Cateserv
-    
-    
+        
 class cateservCrear(SuccessMessageMixin, CreateView):
     model =Cateserv
     form = Cateserv
@@ -210,7 +209,6 @@ class cateservEliminar(SuccessMessageMixin, DeleteView):
 class Listadoscripcion(ListView):
     model = Scripcion
     
-    
 class scripcionCrear(SuccessMessageMixin, CreateView):
     model =Scripcion
     form = Scripcion
@@ -244,7 +242,6 @@ class scripcionEliminar(SuccessMessageMixin, DeleteView):
  
 class Listadocateserv(ListView):
     model = Cateserv
-    
     
 class cateservCrear(SuccessMessageMixin, CreateView):
     model =Cateserv
@@ -348,7 +345,6 @@ class personaEliminar(SuccessMessageMixin, DeleteView):
 class Listadocuerpo(ListView):
     model = Cuerpo
     
-    
 class cuerpoCrear(SuccessMessageMixin, CreateView):
     model =Cuerpo
     form = Cuerpo
@@ -377,6 +373,41 @@ class cuerpoEliminar(SuccessMessageMixin, DeleteView):
     # Redireccionamos a la página principal luego de eliminar un registro o postre
     def get_success_url(self): 
         success_message = 'Cuerpo Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+    
+    
+class Listadoservicio(ListView):
+    model = Servicio
+    
+class servicioCrear(SuccessMessageMixin, CreateView):
+    model =Servicio
+    form = Servicio
+    fields = "__all__"
+    success_message ='Servicio creada correctamente'
+     
+    def get_success_url(self):        
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+
+class servicioDetalle (DetailView):
+    model =Servicio
+
+class  servicioActualizar(SuccessMessageMixin,UpdateView):
+    model = Servicio
+    form = Servicio
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'postres' de nuestra Base de Datos 
+    success_message = 'Servicio Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('leer') # Redireccionamos a la vista principal 'leer'
+class servicioEliminar(SuccessMessageMixin, DeleteView): 
+    model = Servicio 
+    form = Servicio
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Servicio Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
         messages.success (self.request, (success_message))       
         return reverse('leer') # Redireccionamos a la vista principal 'leer'
 
