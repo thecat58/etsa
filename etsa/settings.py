@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'etsa',
         'USER': 'root',
-        'PASSWORD': 'Admin1234*',
+        'PASSWORD': '',
         'PORT': '3306',
         'HOST':'127.0.0.1',
     }
@@ -119,15 +119,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-<<<<<<< HEAD
-LOGIN_REDIRECT_URL='index'
-
-LANGUAGE_CODE = 'en-es'
-=======
 LOGIN_REDIRECT_URL = 'index'
 
 LANGUAGE_CODE = 'es-es'
->>>>>>> 196e9063c08b5bcbf566ba12828141ebbfdaa755
 
 TIME_ZONE = 'UTC'
 
